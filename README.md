@@ -4,7 +4,8 @@ SniffCore.Layouting
 SniffCore.Layouting is a collection of custom controls for layouting.
 
 ## How To
-* [Wiki](http://wiki.sniffcore.com/index.php?title=SniffCore.Layouting)
+* [Documentation](http://wiki.sniffcore.com)
+* [Website](http://sniffcore.com)
 
 ## License
 
