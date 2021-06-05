@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 // ReSharper disable once CheckNamespace
 
-namespace SniffCore.Controls
+namespace SniffCore.Layouting
 {
     /// <summary>
     ///     Represents a single line in the <see cref="TitledItemsControl" />.

@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 // ReSharper disable once CheckNamespace
 
-namespace SniffCore.Controls
+namespace SniffCore.Layouting
 {
     /// <summary>
     ///     Provides the possibility to automatically align titles and contents.

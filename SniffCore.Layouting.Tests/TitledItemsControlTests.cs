@@ -2,7 +2,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using NUnit.Framework;
-using SniffCore.Controls;
 
 namespace SniffCore.Layouting.Tests
 {
