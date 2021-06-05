@@ -14,6 +14,23 @@ namespace SniffCore.Controls
     /// <summary>
     ///     Provides the possibility to automatically align titles and contents.
     /// </summary>
+    /// <example>
+    ///     <code lang="XAML">
+    /// <![CDATA[
+    /// <sniffCore:TitledItemsControl>
+    ///     <sniffCore:TitledItem Text="Name">
+    ///         <TextBox Text="{Binding Name}" />
+    ///     </sniffCore:TitledItem>
+    ///     <sniffCore:TitledItem Text="Family Name">
+    ///         <TextBox Text="{Binding FamilyName}" />
+    ///     </sniffCore:TitledItem>
+    ///     <sniffCore:TitledItem Text="Age">
+    ///         <TextBox Text="{Binding Age}" />
+    ///     </sniffCore:TitledItem>
+    /// </sniffCore:TitledItemsControl>
+    /// ]]>
+    /// </code>
+    /// </example>
     public class TitledItemsControl : ItemsControl
     {
         /// <summary>
