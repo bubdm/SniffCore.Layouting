@@ -7,11 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SniffCore.Layouting", "Snif
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD43F84E-4FDB-47D7-AE23-6C48CAC432F4}"
 	ProjectSection(SolutionItems) = preProject
+		Icon.png = Icon.png
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SniffCore.Layouting.Tests", "SniffCore.Layouting.Tests\SniffCore.Layouting.Tests.csproj", "{E6269B0C-C91A-4539-8B74-127D4961458E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SniffCore.Layouting.Tests", "SniffCore.Layouting.Tests\SniffCore.Layouting.Tests.csproj", "{E6269B0C-C91A-4539-8B74-127D4961458E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
