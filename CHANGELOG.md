@@ -4,13 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Ideas/Upcoming]
-Outlookbar (NavigationBar, Accordion)
-Pageinator (PagingControl)
-ArcPanel
-DynamicTabControl
-EllipsePanel
-Resizer
-UniformWrapPanel
+* Outlookbar (NavigationBar, Accordion)
+* Pageinator (PagingControl)
+* ArcPanel
+* DynamicTabControl
+* EllipsePanel
+* Resizer
+* UniformWrapPanel
 
 ## [Unreleased]
 
