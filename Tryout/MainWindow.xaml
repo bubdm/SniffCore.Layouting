@@ -92,6 +92,13 @@
                 </layouting:HeaderItemsControl>
             </StackPanel>
         </TabItem>
+        <TabItem Header="DynamicTabControl">
+            <layouting:DynamicTabControl>
+                <layouting:DynamicTabItem Header="First" />
+                <layouting:DynamicTabItem Header="Second" />
+                <layouting:DynamicTabItem Header="Third" />
+            </layouting:DynamicTabControl>
+        </TabItem>
     </TabControl>
 
 </Window>
