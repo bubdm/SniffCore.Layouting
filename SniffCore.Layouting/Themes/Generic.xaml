@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SniffCore.Layouting;component/Themes/Resizer.xaml" />
         <ResourceDictionary Source="/SniffCore.Layouting;component/Themes/TitledItemsControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

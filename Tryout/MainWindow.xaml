@@ -53,6 +53,19 @@
                 </layouting:UniformWrapPanel>
             </StackPanel>
         </TabItem>
+        <TabItem Header="Resizer">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <layouting:Resizer FrameSizes="0,0,4,4" Margin="0,0,20,0" VerticalAlignment="Top" CornerSize="12">
+                    <Button Content="Button" Padding="12" />
+                </layouting:Resizer>
+                <layouting:Resizer RightWidth="4" Margin="0,0,20,0" VerticalAlignment="Top">
+                    <Button Content="Button" Padding="12" />
+                </layouting:Resizer>
+                <layouting:Resizer BottomHeight="4" VerticalAlignment="Top">
+                    <Button Content="Button" Padding="12" />
+                </layouting:Resizer>
+            </StackPanel>
+        </TabItem>
     </TabControl>
 
 </Window>
