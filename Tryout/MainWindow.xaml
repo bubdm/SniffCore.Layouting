@@ -66,6 +66,32 @@
                 </layouting:Resizer>
             </StackPanel>
         </TabItem>
+        <TabItem Header="HeaderItemsControl">
+            <StackPanel Orientation="Horizontal">
+                <layouting:HeaderItemsControl Margin="0,0,20,0" Orientation="Vertical">
+                    <layouting:HeaderItem Header="Name">
+                        <TextBox Text="{Binding Name}" />
+                    </layouting:HeaderItem>
+                    <layouting:HeaderItem Header="Family Name">
+                        <TextBox Text="{Binding FamilyName}" />
+                    </layouting:HeaderItem>
+                    <layouting:HeaderItem Header="Age">
+                        <TextBox Text="{Binding Age}" />
+                    </layouting:HeaderItem>
+                </layouting:HeaderItemsControl>
+                <layouting:HeaderItemsControl Margin="0,0,20,0" Orientation="Horizontal" VerticalContentAlignments="Top" ContentMargins="2">
+                    <layouting:HeaderItem Header="Name">
+                        <TextBox Text="{Binding Name}" />
+                    </layouting:HeaderItem>
+                    <layouting:HeaderItem Header="Family Name">
+                        <TextBox Text="{Binding FamilyName}" />
+                    </layouting:HeaderItem>
+                    <layouting:HeaderItem Header="Age">
+                        <TextBox Text="{Binding Age}" />
+                    </layouting:HeaderItem>
+                </layouting:HeaderItemsControl>
+            </StackPanel>
+        </TabItem>
     </TabControl>
 
 </Window>
