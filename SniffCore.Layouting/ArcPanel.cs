@@ -102,7 +102,6 @@ namespace SniffCore.Layouting
 
             ResetArc(finalSize);
 
-            var pathLength = PathCalculator.GetPathFigureLength(_figure);
             var pathGeometry = new PathGeometry(new[] {_figure});
             var distance = 1 / (double) (InternalChildren.Count + 1);
             var position = distance;
