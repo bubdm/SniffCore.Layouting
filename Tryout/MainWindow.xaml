@@ -1,0 +1,44 @@
+﻿<Window x:Class="Tryout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:layouting="http://sniffcore.com"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    
+    <TabControl>
+        <TabItem Header="EllipsePanel/ArcPanel">
+            <layouting:EllipsePanel RotateElements="True" ElementsRotateDirection="Outroversive" Margin="40" ElementStartPosition="Bottom">
+                <layouting:ArcPanel Bend="2" Width="100" Height="70">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:ArcPanel>
+                <layouting:ArcPanel Bend="2" Width="100" Height="70">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:ArcPanel>
+                <layouting:ArcPanel Bend="2" Width="100" Height="70">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:ArcPanel>
+                <layouting:ArcPanel Bend="2" Width="100" Height="70">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:ArcPanel>
+                <layouting:ArcPanel Bend="2" Width="100" Height="70">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:ArcPanel>
+            </layouting:EllipsePanel>
+        </TabItem>
+    </TabControl>
+
+</Window>

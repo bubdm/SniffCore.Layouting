@@ -7,13 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 * Outlookbar (NavigationBar, Accordion)
 * Pageinator (PagingControl)
 * DynamicTabControl
-* EllipsePanel
 * Resizer
 * UniformWrapPanel
 * HeaderItemsControl
 
 ## [Unreleased]
 * Added ArcPanel which arranges child elements in a configurable arc form.
+* Added EllipsePanel which arranges child elements in a ellipse form.
 
 ## [1.0.0] - 2021-06-13
 ### Added
