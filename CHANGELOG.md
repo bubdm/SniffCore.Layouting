@@ -6,7 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Ideas/Upcoming]
 * Outlookbar (NavigationBar, Accordion)
 * Pageinator (PagingControl)
-* ArcPanel
 * DynamicTabControl
 * EllipsePanel
 * Resizer
@@ -14,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 * HeaderItemsControl
 
 ## [Unreleased]
+* Added ArcPanel which arranges child elements in a configurable arc form.
 
 ## [1.0.0] - 2021-06-13
 ### Added
