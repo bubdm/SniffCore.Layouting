@@ -8,12 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 * Pageinator (PagingControl)
 * DynamicTabControl
 * Resizer
-* UniformWrapPanel
 * HeaderItemsControl
 
 ## [Unreleased]
 * Added ArcPanel which arranges child elements in a configurable arc form.
 * Added EllipsePanel which arranges child elements in a ellipse form.
+* Added UniformWrapPanel which enhances the WrapPanel by the feature that all items will have the same size.
 
 ## [1.0.0] - 2021-06-13
 ### Added

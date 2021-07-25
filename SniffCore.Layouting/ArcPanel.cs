@@ -20,7 +20,7 @@ namespace SniffCore.Layouting
     /// <ItemsControl ItemsSource="{Binding Cards}">
     ///     <ItemsControl.ItemsPanel>
     ///         <ItemsPanelTemplate>
-    ///             <WPFToolkit:ArcPanel Width="210" Height="100" Bend="3" />
+    ///             <controls:ArcPanel Width="210" Height="100" Bend="3" />
     ///         </ItemsPanelTemplate>
     ///     </ItemsControl.ItemsPanel>
     /// </ItemsControl>

@@ -39,6 +39,20 @@
                 </layouting:ArcPanel>
             </layouting:EllipsePanel>
         </TabItem>
+        <TabItem Header="UniformWrapPanel">
+            <StackPanel>
+                <layouting:UniformWrapPanel Orientation="Horizontal" MinItemWidth="100">
+                    <Button Content="One" />
+                    <Button Content="Two" />
+                    <Button Content="Three" />
+                </layouting:UniformWrapPanel>
+                <layouting:UniformWrapPanel Orientation="Horizontal">
+                    <Button Content="One" />
+                    <Button Content="Two" />
+                    <Button Content="Three" />
+                </layouting:UniformWrapPanel>
+            </StackPanel>
+        </TabItem>
     </TabControl>
 
 </Window>
