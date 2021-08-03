@@ -99,6 +99,73 @@
                 <layouting:DynamicTabItem Header="Third" />
             </layouting:DynamicTabControl>
         </TabItem>
+        <TabItem Header="StackPanel">
+            <Grid ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <layouting:StackPanel Grid.Column="0"
+                                      Grid.Row="0"
+                                      Spacing="10"
+                                      Background="Green"
+                                      Margin="10"
+                                      Orientation="Vertical">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:StackPanel>
+                <layouting:StackPanel Grid.Column="1"
+                                      Grid.Row="0"
+                                      Spacing="10"
+                                      Background="Blue"
+                                      Margin="10"
+                                      Orientation="Horizontal">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:StackPanel>
+                <ScrollViewer Grid.Column="0"
+                              Grid.Row="1"
+                              Margin="10"
+                              HorizontalScrollBarVisibility="Disabled"
+                              VerticalScrollBarVisibility="Auto">
+                    <layouting:StackPanel Spacing="10"
+                                          Background="Blue"
+                                          Orientation="Vertical">
+                        <Button Content="First" />
+                        <Button Content="Second" />
+                        <Button Content="Third" />
+                        <Button Content="Fourth" />
+                        <Button Content="Fifth" />
+                        <Button Content="Sixth" />
+                        <Button Content="Seventh" />
+                    </layouting:StackPanel>
+                </ScrollViewer>
+
+                <ScrollViewer Grid.Column="1"
+                              Grid.Row="1"
+                              Margin="10"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                    <layouting:StackPanel Spacing="10"
+                                          Background="Green"
+                                          Orientation="Horizontal">
+                        <Button Content="First" />
+                        <Button Content="Second" />
+                        <Button Content="Third" />
+                        <Button Content="Fourth" />
+                        <Button Content="Fifth" />
+                        <Button Content="Sixth" />
+                        <Button Content="Seventh" />
+                    </layouting:StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </TabItem>
     </TabControl>
 
 </Window>
