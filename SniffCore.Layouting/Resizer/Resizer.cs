@@ -8,6 +8,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
+// ReSharper disable once CheckNamespace
+
 namespace SniffCore.Layouting
 {
     /// <summary>

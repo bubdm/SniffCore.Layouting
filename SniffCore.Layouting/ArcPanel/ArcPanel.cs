@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+// ReSharper disable once CheckNamespace
+
 namespace SniffCore.Layouting
 {
     /// <summary>

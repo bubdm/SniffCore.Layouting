@@ -3,30 +3,32 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 //
 
+// ReSharper disable once CheckNamespace
+
 namespace SniffCore.Layouting
 {
     /// <summary>
-    ///     Defines the position where the elements has to start in the <see cref="EllipsePanel" />.
+    ///     Defines where the <see cref="FrameResizer" /> in the <see cref="Resizer" /> is placed.
     /// </summary>
-    public enum ElementStartPosition
+    public enum FrameResizerPositions
     {
         /// <summary>
-        ///     The first item in the ellipse panel is starting on the left side.
+        ///     The <see cref="FrameResizer" /> is placed on the left side.
         /// </summary>
         Left,
 
         /// <summary>
-        ///     The first item in the ellipse panel is starting on top.
+        ///     The <see cref="FrameResizer" /> is placed on the top.
         /// </summary>
         Top,
 
         /// <summary>
-        ///     The first item in the ellipse panel is starting on the right side.
+        ///     The <see cref="FrameResizer" /> is placed on the right side.
         /// </summary>
         Right,
 
         /// <summary>
-        ///     The first item in the ellipse panel is starting on bottom.
+        ///     The <see cref="FrameResizer" /> is placed on the bottom.
         /// </summary>
         Bottom
     }
