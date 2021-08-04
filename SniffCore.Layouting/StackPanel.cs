@@ -8,7 +8,7 @@ namespace SniffCore.Layouting
     ///     A StackPanel which adds a spacing between the items.
     /// </summary>
     /// <example>
-    /// <code lang="xaml">
+    ///     <code lang="xaml">
     /// <![CDATA[
     /// <Window>
     ///     <DockPanel>
@@ -21,7 +21,7 @@ namespace SniffCore.Layouting
     ///             <Button Content="Finish" />
     ///             <Button Content="Cancel" />
     ///         </controls:StackPanel>
-    ///
+    /// 
     ///         <controls:StackPanel Spacings="10">
     ///             <TextBox />
     ///             <TextBox />
@@ -76,7 +76,11 @@ namespace SniffCore.Layouting
             var totalItemHeight = 0d;
             foreach (UIElement child in Children)
             {
-                child.Measure(availableSize);
+                var newAvailableSize = new Size(availableSize.Width, double.PositiveInfinity);
+                if (Orientation == Orientation.Horizontal)
+                    newAvailableSize = new Size(double.PositiveInfinity, availableSize.Height);
+
+                child.Measure(newAvailableSize);
                 maxWidth = Math.Max(maxWidth, child.DesiredSize.Width);
                 maxHeight = Math.Max(maxHeight, child.DesiredSize.Height);
 
