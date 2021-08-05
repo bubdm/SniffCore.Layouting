@@ -48,7 +48,7 @@ namespace SniffCore.Layouting
         ///     Identifies the Orientation dependency property.
         /// </summary>
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(UniformPanel), new PropertyMetadata(Orientation.Horizontal));
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(UniformPanel), new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         ///     Gets or sets the space between the items.
