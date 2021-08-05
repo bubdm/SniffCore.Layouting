@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 ### Added
 * StackPanel, a control which behaves like the original stack panel but with the additional property for a spacing between the children
+* UniformPanel, A UniformGrid with only one row or one column, depending on the orientation, which adds a spacing between the items
 
 ## [1.6.0] - 2021-07-25
 ### Added

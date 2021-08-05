@@ -8,10 +8,11 @@
         Title="MainWindow"
         Height="450"
         Width="800">
-    
+
     <TabControl>
         <TabItem Header="EllipsePanel/ArcPanel">
-            <layouting:EllipsePanel RotateElements="True" ElementsRotateDirection="Outroversive" Margin="40" ElementStartPosition="Bottom">
+            <layouting:EllipsePanel RotateElements="True" ElementsRotateDirection="Outroversive" Margin="40"
+                                    ElementStartPosition="Bottom">
                 <layouting:ArcPanel Bend="2" Width="100" Height="70">
                     <Button Content="First" />
                     <Button Content="Second" />
@@ -79,7 +80,8 @@
                         <TextBox Text="{Binding Age}" />
                     </layouting:HeaderItem>
                 </layouting:HeaderItemsControl>
-                <layouting:HeaderItemsControl Margin="0,0,20,0" Orientation="Horizontal" VerticalContentAlignments="Top" ContentMargins="2">
+                <layouting:HeaderItemsControl Margin="0,0,20,0" Orientation="Horizontal"
+                                              VerticalContentAlignments="Top" ContentMargins="2">
                     <layouting:HeaderItem Header="Name">
                         <TextBox Text="{Binding Name}" />
                     </layouting:HeaderItem>
@@ -102,6 +104,7 @@
         <TabItem Header="StackPanel">
             <Grid ShowGridLines="True">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -129,6 +132,18 @@
                     <Button Content="Second" />
                     <Button Content="Third" />
                 </layouting:StackPanel>
+
+                <layouting:StackPanel Grid.Column="2"
+                                      Grid.Row="0"
+                                      Spacing="10"
+                                      Background="Green"
+                                      Margin="10"
+                                      HorizontalAlignment="Right"
+                                      Orientation="Horizontal">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:StackPanel>
                 <ScrollViewer Grid.Column="0"
                               Grid.Row="1"
                               Margin="10"
@@ -146,7 +161,6 @@
                         <Button Content="Seventh" />
                     </layouting:StackPanel>
                 </ScrollViewer>
-
                 <ScrollViewer Grid.Column="1"
                               Grid.Row="1"
                               Margin="10"
@@ -164,6 +178,77 @@
                         <Button Content="Seventh" />
                     </layouting:StackPanel>
                 </ScrollViewer>
+                <layouting:StackPanel Grid.Column="2"
+                                      Grid.Row="1"
+                                      Spacing="10"
+                                      Background="Blue"
+                                      Margin="10"
+                                      VerticalAlignment="Top"
+                                      Orientation="Vertical">
+                    <Button Content="First" />
+                    <Button Content="Second" />
+                    <Button Content="Third" />
+                </layouting:StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="UniformPanel">
+            <Grid ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <layouting:UniformPanel Grid.Column="0" Grid.Row="0" Margin="10" Orientation="Vertical"
+                                        VerticalAlignment="Top" Background="Green">
+                    <TextBox HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                             TextWrapping="Wrap" />
+                    <TextBox />
+                    <TextBox />
+                </layouting:UniformPanel>
+
+                <layouting:UniformPanel Grid.Column="1" Grid.Row="0" Margin="10" Orientation="Horizontal"
+                                        HorizontalAlignment="Left" Background="Blue">
+                    <TextBox MinWidth="30" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                             TextWrapping="Wrap" />
+                    <TextBox />
+                    <TextBox />
+                </layouting:UniformPanel>
+
+                <layouting:UniformPanel Grid.Column="2" Grid.Row="0" Margin="10" VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Right" Orientation="Horizontal" Background="Green">
+                    <Button Content="OK" />
+                    <Button Content="Cancel" />
+                    <Button Content="Apply" />
+                </layouting:UniformPanel>
+
+                <layouting:UniformPanel Grid.Column="0" Grid.Row="1" Margin="10" Orientation="Vertical"
+                                        Background="Blue">
+                    <TextBox HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                             TextWrapping="Wrap" />
+                    <TextBox />
+                    <TextBox />
+                </layouting:UniformPanel>
+
+                <layouting:UniformPanel Grid.Column="1" Grid.Row="1" Margin="10" Orientation="Horizontal"
+                                        Background="Green">
+                    <TextBox MinWidth="30" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                             TextWrapping="Wrap" />
+                    <TextBox />
+                    <TextBox />
+                </layouting:UniformPanel>
+
+                <layouting:UniformPanel Grid.Column="2" Grid.Row="1" Margin="10" VerticalAlignment="Top"
+                                        HorizontalAlignment="Right" Orientation="Vertical" Background="Blue">
+                    <Button Content="OK" />
+                    <Button Content="Cancel" />
+                    <Button Content="Apply" />
+                </layouting:UniformPanel>
             </Grid>
         </TabItem>
     </TabControl>

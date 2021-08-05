@@ -1,6 +1,13 @@
-﻿using System;
+﻿//
+// Copyright (c) David Wendland. All rights reserved.
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+//
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
+
+// ReSharper disable once CheckNamespace
 
 namespace SniffCore.Layouting
 {
@@ -88,16 +95,19 @@ namespace SniffCore.Layouting
                 totalItemHeight += child.DesiredSize.Height;
             }
 
-
             if (Orientation == Orientation.Horizontal)
             {
                 var calculatedWidth = totalItemWidth + Spacing * (Children.Count - 1);
                 var availableWidth = double.IsInfinity(availableSize.Width) ? calculatedWidth : availableSize.Width;
+                if (HorizontalAlignment != HorizontalAlignment.Stretch)
+                    availableWidth = Math.Min(availableWidth, calculatedWidth);
                 return new Size(Math.Max(availableWidth, calculatedWidth), maxHeight);
             }
 
             var calculatedHeight = totalItemHeight + Spacing * (Children.Count - 1);
             var availableHeight = double.IsInfinity(availableSize.Height) ? calculatedHeight : availableSize.Height;
+            if (VerticalAlignment != VerticalAlignment.Stretch)
+                availableHeight = Math.Min(availableHeight, calculatedHeight);
             return new Size(maxWidth, Math.Max(availableHeight, calculatedHeight));
         }
 
