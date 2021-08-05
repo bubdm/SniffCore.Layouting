@@ -77,14 +77,29 @@ namespace SniffCore.Layouting
         /// <returns>The size this panel would like to get from the parent control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
+            return Measure(availableSize, Children, Spacing, Orientation, HorizontalAlignment, VerticalAlignment);
+        }
+
+        /// <summary>
+        ///     Arranges all the children in the given space by the parent control.
+        /// </summary>
+        /// <param name="finalSize">The available size give from the parent control.</param>
+        /// <returns></returns>
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            return Arrange(finalSize, Children, Spacing, Orientation);
+        }
+
+        internal static Size Measure(Size availableSize, UIElementCollection children, double spacing, Orientation orientation, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
+        {
             var maxWidth = 0d;
             var maxHeight = 0d;
             var totalItemWidth = 0d;
             var totalItemHeight = 0d;
-            foreach (UIElement child in Children)
+            foreach (UIElement child in children)
             {
                 var newAvailableSize = new Size(availableSize.Width, double.PositiveInfinity);
-                if (Orientation == Orientation.Horizontal)
+                if (orientation == Orientation.Horizontal)
                     newAvailableSize = new Size(double.PositiveInfinity, availableSize.Height);
 
                 child.Measure(newAvailableSize);
@@ -95,45 +110,40 @@ namespace SniffCore.Layouting
                 totalItemHeight += child.DesiredSize.Height;
             }
 
-            if (Orientation == Orientation.Horizontal)
+            if (orientation == Orientation.Horizontal)
             {
-                var calculatedWidth = totalItemWidth + Spacing * (Children.Count - 1);
+                var calculatedWidth = totalItemWidth + spacing * (children.Count - 1);
                 var availableWidth = double.IsInfinity(availableSize.Width) ? calculatedWidth : availableSize.Width;
-                if (HorizontalAlignment != HorizontalAlignment.Stretch)
+                if (horizontalAlignment != HorizontalAlignment.Stretch)
                     availableWidth = Math.Min(availableWidth, calculatedWidth);
                 return new Size(Math.Max(availableWidth, calculatedWidth), maxHeight);
             }
 
-            var calculatedHeight = totalItemHeight + Spacing * (Children.Count - 1);
+            var calculatedHeight = totalItemHeight + spacing * (children.Count - 1);
             var availableHeight = double.IsInfinity(availableSize.Height) ? calculatedHeight : availableSize.Height;
-            if (VerticalAlignment != VerticalAlignment.Stretch)
+            if (verticalAlignment != VerticalAlignment.Stretch)
                 availableHeight = Math.Min(availableHeight, calculatedHeight);
             return new Size(maxWidth, Math.Max(availableHeight, calculatedHeight));
         }
 
-        /// <summary>
-        ///     Arranges all the children in the given space by the parent control.
-        /// </summary>
-        /// <param name="finalSize">The available size give from the parent control.</param>
-        /// <returns></returns>
-        protected override Size ArrangeOverride(Size finalSize)
+        internal static Size Arrange(Size finalSize, UIElementCollection children, double spacing, Orientation orientation)
         {
             var left = 0d;
             var top = 0d;
 
-            if (Orientation == Orientation.Horizontal)
-                foreach (UIElement child in Children)
+            if (orientation == Orientation.Horizontal)
+                foreach (UIElement child in children)
                 {
                     var desiredSize = child.DesiredSize;
                     child.Arrange(new Rect(new Point(left, top), new Size(desiredSize.Width, finalSize.Height)));
-                    left += desiredSize.Width + Spacing;
+                    left += desiredSize.Width + spacing;
                 }
             else
-                foreach (UIElement child in Children)
+                foreach (UIElement child in children)
                 {
                     var desiredSize = child.DesiredSize;
                     child.Arrange(new Rect(new Point(left, top), new Size(finalSize.Width, desiredSize.Height)));
-                    top += desiredSize.Height + Spacing;
+                    top += desiredSize.Height + spacing;
                 }
 
             return finalSize;

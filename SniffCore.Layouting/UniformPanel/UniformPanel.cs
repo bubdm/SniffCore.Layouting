@@ -75,62 +75,7 @@ namespace SniffCore.Layouting
         /// <returns>The size this panel would like to get from the parent control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
-            var totalSpacing = Spacing * (Children.Count - 1);
-
-            if (Orientation == Orientation.Vertical)
-            {
-                var itemWidth = availableSize.Width;
-                var maxItemHeight = (availableSize.Height - totalSpacing) / Children.Count;
-                var maxItemSize = new Size(itemWidth, maxItemHeight);
-                var meassuredMaxItemHeight = 0d;
-                var meassuredMaxItemWidth = 0d;
-                foreach (UIElement child in Children)
-                {
-                    child.Measure(maxItemSize);
-                    meassuredMaxItemHeight = Math.Max(meassuredMaxItemHeight, child.DesiredSize.Height);
-                    meassuredMaxItemWidth = Math.Max(meassuredMaxItemWidth, child.DesiredSize.Width);
-                }
-
-                if (HorizontalAlignment != HorizontalAlignment.Stretch)
-                    itemWidth = Math.Min(itemWidth, meassuredMaxItemWidth);
-
-                if (double.IsInfinity(itemWidth))
-                    itemWidth = meassuredMaxItemWidth;
-
-                if (double.IsInfinity(maxItemHeight))
-                    maxItemHeight = meassuredMaxItemHeight;
-
-                if (VerticalAlignment == VerticalAlignment.Stretch)
-                    return new Size(itemWidth, maxItemHeight * Children.Count + totalSpacing);
-                return new Size(itemWidth, Math.Min(maxItemHeight, meassuredMaxItemHeight) * Children.Count + totalSpacing);
-            }
-            else
-            {
-                var itemHeight = availableSize.Height;
-                var maxItemWidth = (availableSize.Width - totalSpacing) / Children.Count;
-                var maxItemSize = new Size(maxItemWidth, itemHeight);
-                var meassuredMaxItemHeight = 0d;
-                var meassuredMaxItemWidth = 0d;
-                foreach (UIElement child in Children)
-                {
-                    child.Measure(maxItemSize);
-                    meassuredMaxItemHeight = Math.Max(meassuredMaxItemHeight, child.DesiredSize.Height);
-                    meassuredMaxItemWidth = Math.Max(meassuredMaxItemWidth, child.DesiredSize.Width);
-                }
-
-                if (VerticalAlignment != VerticalAlignment.Stretch)
-                    itemHeight = Math.Min(itemHeight, meassuredMaxItemHeight);
-
-                if (double.IsInfinity(itemHeight))
-                    itemHeight = meassuredMaxItemHeight;
-
-                if (double.IsInfinity(maxItemWidth))
-                    maxItemWidth = meassuredMaxItemWidth;
-
-                if (HorizontalAlignment == HorizontalAlignment.Stretch)
-                    return new Size(maxItemWidth * Children.Count + totalSpacing, itemHeight);
-                return new Size(Math.Min(maxItemWidth, meassuredMaxItemWidth) * Children.Count + totalSpacing, itemHeight);
-            }
+            return Measure(availableSize, Children, Spacing, Orientation, HorizontalAlignment, VerticalAlignment);
         }
 
         /// <summary>
@@ -140,33 +85,98 @@ namespace SniffCore.Layouting
         /// <returns></returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var spaces = Spacing * (Children.Count - 1);
+            return Arrange(finalSize, Children, Spacing, Orientation);
+        }
+
+        internal static Size Measure(Size availableSize, UIElementCollection children, double spacing, Orientation orientation, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
+        {
+            var totalSpacing = spacing * (children.Count - 1);
+
+            if (orientation == Orientation.Vertical)
+            {
+                var itemWidth = availableSize.Width;
+                var maxItemHeight = (availableSize.Height - totalSpacing) / children.Count;
+                var maxItemSize = new Size(itemWidth, maxItemHeight);
+                var meassuredMaxItemHeight = 0d;
+                var meassuredMaxItemWidth = 0d;
+                foreach (UIElement child in children)
+                {
+                    child.Measure(maxItemSize);
+                    meassuredMaxItemHeight = Math.Max(meassuredMaxItemHeight, child.DesiredSize.Height);
+                    meassuredMaxItemWidth = Math.Max(meassuredMaxItemWidth, child.DesiredSize.Width);
+                }
+
+                if (horizontalAlignment != HorizontalAlignment.Stretch)
+                    itemWidth = Math.Min(itemWidth, meassuredMaxItemWidth);
+
+                if (double.IsInfinity(itemWidth))
+                    itemWidth = meassuredMaxItemWidth;
+
+                if (double.IsInfinity(maxItemHeight))
+                    maxItemHeight = meassuredMaxItemHeight;
+
+                if (verticalAlignment == VerticalAlignment.Stretch)
+                    return new Size(itemWidth, maxItemHeight * children.Count + totalSpacing);
+                return new Size(itemWidth, Math.Min(maxItemHeight, meassuredMaxItemHeight) * children.Count + totalSpacing);
+            }
+            else
+            {
+                var itemHeight = availableSize.Height;
+                var maxItemWidth = (availableSize.Width - totalSpacing) / children.Count;
+                var maxItemSize = new Size(maxItemWidth, itemHeight);
+                var meassuredMaxItemHeight = 0d;
+                var meassuredMaxItemWidth = 0d;
+                foreach (UIElement child in children)
+                {
+                    child.Measure(maxItemSize);
+                    meassuredMaxItemHeight = Math.Max(meassuredMaxItemHeight, child.DesiredSize.Height);
+                    meassuredMaxItemWidth = Math.Max(meassuredMaxItemWidth, child.DesiredSize.Width);
+                }
+
+                if (verticalAlignment != VerticalAlignment.Stretch)
+                    itemHeight = Math.Min(itemHeight, meassuredMaxItemHeight);
+
+                if (double.IsInfinity(itemHeight))
+                    itemHeight = meassuredMaxItemHeight;
+
+                if (double.IsInfinity(maxItemWidth))
+                    maxItemWidth = meassuredMaxItemWidth;
+
+                if (horizontalAlignment == HorizontalAlignment.Stretch)
+                    return new Size(maxItemWidth * children.Count + totalSpacing, itemHeight);
+                return new Size(Math.Min(maxItemWidth, meassuredMaxItemWidth) * children.Count + totalSpacing, itemHeight);
+            }
+        }
+
+        internal static Size Arrange(Size finalSize, UIElementCollection children, double spacing, Orientation orientation)
+        {
+            var spaces = spacing * (children.Count - 1);
             var itemHeight = finalSize.Height;
             var itemWidth = finalSize.Width;
 
             var left = 0d;
             var top = 0d;
 
-            if (Orientation == Orientation.Horizontal)
+            if (orientation == Orientation.Horizontal)
             {
-                itemWidth = (finalSize.Width - spaces) / Children.Count;
-                foreach (UIElement child in Children)
+                itemWidth = (finalSize.Width - spaces) / children.Count;
+                foreach (UIElement child in children)
                 {
                     child.Arrange(new Rect(new Point(left, top), new Size(itemWidth, itemHeight)));
-                    left += itemWidth + Spacing;
+                    left += itemWidth + spacing;
                 }
             }
             else
             {
-                itemHeight = (finalSize.Height - spaces) / Children.Count;
-                foreach (UIElement child in Children)
+                itemHeight = (finalSize.Height - spaces) / children.Count;
+                foreach (UIElement child in children)
                 {
                     child.Arrange(new Rect(new Point(left, top), new Size(itemWidth, itemHeight)));
-                    top += itemHeight + Spacing;
+                    top += itemHeight + spacing;
                 }
             }
 
-            return base.ArrangeOverride(finalSize);
+            return finalSize;
         }
     }
 }
