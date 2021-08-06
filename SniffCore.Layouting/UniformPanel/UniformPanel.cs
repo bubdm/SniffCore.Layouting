@@ -98,6 +98,8 @@ namespace SniffCore.Layouting
             {
                 var itemWidth = availableSize.Width;
                 var maxItemHeight = (availableSize.Height - totalSpacing) / elements.Count;
+                if (maxItemHeight < 0)
+                    maxItemHeight = 0;
                 var maxItemSize = new Size(itemWidth, maxItemHeight);
                 var meassuredMaxItemHeight = 0d;
                 var meassuredMaxItemWidth = 0d;
@@ -125,6 +127,8 @@ namespace SniffCore.Layouting
             {
                 var itemHeight = availableSize.Height;
                 var maxItemWidth = (availableSize.Width - totalSpacing) / elements.Count;
+                if (maxItemWidth < 0)
+                    maxItemWidth = 0;
                 var maxItemSize = new Size(maxItemWidth, itemHeight);
                 var meassuredMaxItemHeight = 0d;
                 var meassuredMaxItemWidth = 0d;
