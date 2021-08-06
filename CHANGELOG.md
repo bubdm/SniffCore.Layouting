@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 * Pageinator (PagingControl)
 
 ## [Unreleased]
+
+## [1.8.2] - 2021-08-06
 ### Fixed
 * StackPanel, UniformPanel and ItemsPanel now take care about items be set on collapsed
 * The UniformPanel or Uniform ItemsPanel does not crash anymore if the height or width of the children became negative

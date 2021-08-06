@@ -12,7 +12,7 @@
     <PackageIcon>Icon.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/devicenator/SniffCore.Layouting</RepositoryUrl>
-    <Version>1.8.0</Version>
+    <Version>1.8.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
