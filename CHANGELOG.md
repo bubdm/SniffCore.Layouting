@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 * Pageinator (PagingControl)
 
 ## [Unreleased]
+### Fixed
+* StackPanel, UniformPanel and ItemsPanel now take care about items be set on collapsed
 
 ## [1.8.0] - 2021-08-05
 ### Added

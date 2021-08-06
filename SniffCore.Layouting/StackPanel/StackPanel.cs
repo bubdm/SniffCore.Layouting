@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -92,11 +93,13 @@ namespace SniffCore.Layouting
 
         internal static Size Measure(Size availableSize, UIElementCollection children, double spacing, Orientation orientation, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
         {
+            var elements = children.Cast<UIElement>().Where(x => x.Visibility != Visibility.Collapsed).ToList();
+
             var maxWidth = 0d;
             var maxHeight = 0d;
             var totalItemWidth = 0d;
             var totalItemHeight = 0d;
-            foreach (UIElement child in children)
+            foreach (UIElement child in elements)
             {
                 var newAvailableSize = new Size(availableSize.Width, double.PositiveInfinity);
                 if (orientation == Orientation.Horizontal)
@@ -112,14 +115,14 @@ namespace SniffCore.Layouting
 
             if (orientation == Orientation.Horizontal)
             {
-                var calculatedWidth = totalItemWidth + spacing * (children.Count - 1);
+                var calculatedWidth = totalItemWidth + spacing * (elements.Count - 1);
                 var availableWidth = double.IsInfinity(availableSize.Width) ? calculatedWidth : availableSize.Width;
                 if (horizontalAlignment != HorizontalAlignment.Stretch)
                     availableWidth = Math.Min(availableWidth, calculatedWidth);
                 return new Size(Math.Max(availableWidth, calculatedWidth), maxHeight);
             }
 
-            var calculatedHeight = totalItemHeight + spacing * (children.Count - 1);
+            var calculatedHeight = totalItemHeight + spacing * (elements.Count - 1);
             var availableHeight = double.IsInfinity(availableSize.Height) ? calculatedHeight : availableSize.Height;
             if (verticalAlignment != VerticalAlignment.Stretch)
                 availableHeight = Math.Min(availableHeight, calculatedHeight);
@@ -128,18 +131,20 @@ namespace SniffCore.Layouting
 
         internal static Size Arrange(Size finalSize, UIElementCollection children, double spacing, Orientation orientation)
         {
+            var elements = children.Cast<UIElement>().Where(x => x.Visibility != Visibility.Collapsed).ToList();
+
             var left = 0d;
             var top = 0d;
 
             if (orientation == Orientation.Horizontal)
-                foreach (UIElement child in children)
+                foreach (UIElement child in elements)
                 {
                     var desiredSize = child.DesiredSize;
                     child.Arrange(new Rect(new Point(left, top), new Size(desiredSize.Width, finalSize.Height)));
                     left += desiredSize.Width + spacing;
                 }
             else
-                foreach (UIElement child in children)
+                foreach (UIElement child in elements)
                 {
                     var desiredSize = child.DesiredSize;
                     child.Arrange(new Rect(new Point(left, top), new Size(finalSize.Width, desiredSize.Height)));

@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -90,16 +91,17 @@ namespace SniffCore.Layouting
 
         internal static Size Measure(Size availableSize, UIElementCollection children, double spacing, Orientation orientation, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment)
         {
-            var totalSpacing = spacing * (children.Count - 1);
+            var elements = children.Cast<UIElement>().Where(x => x.Visibility != Visibility.Collapsed).ToList();
+            var totalSpacing = spacing * (elements.Count - 1);
 
             if (orientation == Orientation.Vertical)
             {
                 var itemWidth = availableSize.Width;
-                var maxItemHeight = (availableSize.Height - totalSpacing) / children.Count;
+                var maxItemHeight = (availableSize.Height - totalSpacing) / elements.Count;
                 var maxItemSize = new Size(itemWidth, maxItemHeight);
                 var meassuredMaxItemHeight = 0d;
                 var meassuredMaxItemWidth = 0d;
-                foreach (UIElement child in children)
+                foreach (UIElement child in elements)
                 {
                     child.Measure(maxItemSize);
                     meassuredMaxItemHeight = Math.Max(meassuredMaxItemHeight, child.DesiredSize.Height);
@@ -116,17 +118,17 @@ namespace SniffCore.Layouting
                     maxItemHeight = meassuredMaxItemHeight;
 
                 if (verticalAlignment == VerticalAlignment.Stretch)
-                    return new Size(itemWidth, maxItemHeight * children.Count + totalSpacing);
-                return new Size(itemWidth, Math.Min(maxItemHeight, meassuredMaxItemHeight) * children.Count + totalSpacing);
+                    return new Size(itemWidth, maxItemHeight * elements.Count + totalSpacing);
+                return new Size(itemWidth, Math.Min(maxItemHeight, meassuredMaxItemHeight) * elements.Count + totalSpacing);
             }
             else
             {
                 var itemHeight = availableSize.Height;
-                var maxItemWidth = (availableSize.Width - totalSpacing) / children.Count;
+                var maxItemWidth = (availableSize.Width - totalSpacing) / elements.Count;
                 var maxItemSize = new Size(maxItemWidth, itemHeight);
                 var meassuredMaxItemHeight = 0d;
                 var meassuredMaxItemWidth = 0d;
-                foreach (UIElement child in children)
+                foreach (UIElement child in elements)
                 {
                     child.Measure(maxItemSize);
                     meassuredMaxItemHeight = Math.Max(meassuredMaxItemHeight, child.DesiredSize.Height);
@@ -143,14 +145,15 @@ namespace SniffCore.Layouting
                     maxItemWidth = meassuredMaxItemWidth;
 
                 if (horizontalAlignment == HorizontalAlignment.Stretch)
-                    return new Size(maxItemWidth * children.Count + totalSpacing, itemHeight);
-                return new Size(Math.Min(maxItemWidth, meassuredMaxItemWidth) * children.Count + totalSpacing, itemHeight);
+                    return new Size(maxItemWidth * elements.Count + totalSpacing, itemHeight);
+                return new Size(Math.Min(maxItemWidth, meassuredMaxItemWidth) * elements.Count + totalSpacing, itemHeight);
             }
         }
 
         internal static Size Arrange(Size finalSize, UIElementCollection children, double spacing, Orientation orientation)
         {
-            var spaces = spacing * (children.Count - 1);
+            var elements = children.Cast<UIElement>().Where(x => x.Visibility != Visibility.Collapsed).ToList();
+            var spaces = spacing * (elements.Count - 1);
             var itemHeight = finalSize.Height;
             var itemWidth = finalSize.Width;
 
@@ -159,8 +162,8 @@ namespace SniffCore.Layouting
 
             if (orientation == Orientation.Horizontal)
             {
-                itemWidth = (finalSize.Width - spaces) / children.Count;
-                foreach (UIElement child in children)
+                itemWidth = (finalSize.Width - spaces) / elements.Count;
+                foreach (UIElement child in elements)
                 {
                     child.Arrange(new Rect(new Point(left, top), new Size(itemWidth, itemHeight)));
                     left += itemWidth + spacing;
@@ -168,8 +171,8 @@ namespace SniffCore.Layouting
             }
             else
             {
-                itemHeight = (finalSize.Height - spaces) / children.Count;
-                foreach (UIElement child in children)
+                itemHeight = (finalSize.Height - spaces) / elements.Count;
+                foreach (UIElement child in elements)
                 {
                     child.Arrange(new Rect(new Point(left, top), new Size(itemWidth, itemHeight)));
                     top += itemHeight + spacing;
